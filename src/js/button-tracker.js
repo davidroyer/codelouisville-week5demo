@@ -17,7 +17,7 @@ function getAnalyticsInfo (element, valueName) {
  * Note: `this` is equal to the current `button` element
  */
 function trackClickedButtons (buttonsArray) {
-  buttonsArray.forEach(button => {
+  buttonsArray.forEach((button) => {
     button.addEventListener('click', function (clickEvent) {
       var value = getAnalyticsInfo(this, 'id')
       sendToAnalytics(value)
@@ -25,13 +25,8 @@ function trackClickedButtons (buttonsArray) {
   })
 }
 
-// @todo: Refactor to use NodeList.forEach
-
 // Get a reference to all matching elements we want to track clicks on
 var ctaButtonsList = document.querySelectorAll('.button-cta')
 
-// Create an actual Array from this `NodeList`
-var ctaButtonsArray = Array.from(ctaButtonsList)
-
 // Pass this Array of matching elements as an `argument` to the function
-trackClickedButtons(ctaButtonsArray)
+trackClickedButtons(ctaButtonsList)
